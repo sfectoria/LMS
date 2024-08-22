@@ -1,0 +1,43 @@
+[
+    {"id":"1",
+"name": " Pack Basics : HTML,CSS,Bootstrap,JavaScript,JQuery",
+"description": "This package covers the basics of web development by including detailed modules on HTML, CSS, Bootstrap and JavaScript, enabling participants to acquire comprehensive expertise in creating and designing interactive and aesthetically pleasant websites.",   
+"Durée": "Onsite: 4 weeks ,  Online / weekend 8 weeks " ,
+"src":"https://img-b.udemycdn.com/course/750x422/1890026_f604_4.jpg",
+"price":"600dt"
+},
+
+{"id":"2",
+"name": " Pack FronTowe: HTML,CSS,Bootstrap,Javascript,React,React native , github",
+"description": "Our advanced frontend development offer covers React, React Native, Redux, component development, routing, functional programming, OOP, event management, and React Hooks. Designed to empower you in the dynamic web development landscape.",   
+"Durée": "Onsite : 4 weeks ,  Online / weekend 8 weeks " ,
+"src":"https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/237545953/original/5f40ebaec4676ae8b1b3adc9b2c396627f75de9f/be-your-javascript-and-react-tutor.png",
+"price":"600dt"
+},
+
+{"id":"3",
+"name": " Pack BackBridge:NodeJs, ExpressJs, Mongoose, MySQL, SQL, NestJs, Prisma, Turbo",
+"description": "Our advanced backend development offer covers Node.js, Express, Nest.JS, MongoDB, PostgreSQL, and Prisma, providing a comprehensive foundation for server-side web development. Designed to help you excel in the dynamic field of backend development."
+,   
+"Durée": "Onsite : 4 weeks ,  Online/ weekend 8 weeks " ,
+"src":"https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/314696035/original/cacb3e33b05d57ef6dd17bdbbf3d5ea2cb3a6221/develop-backend-rest-api-using-node-js-nest-js-express-js-mongodb-and-mysql.png",
+"price":"600dt"
+},
+
+{"id":"4",
+"name": " Pack Full Stack: From front to back never stop hack",
+"description": "Our FullStack is an intensive and comprehensive program designed to equip participants with a wide range of essential skills, ensuring that they become competent full-stack mern web developers."
+,   
+"Durée": "Onsite : 4 weeks ,  Online/ weekend 8 weeks " ,
+"price":"1500dt",
+"src":"https://assets.bitdegree.org/online-learning-platforms/storage/media/2018/11/What-Is-A-Full-Stack-Developer-and-Everything-You-Need-to-Know-to-Start.jpg"
+},
+{"id":"5",
+"name": " Pack PFE: Internship & training program , FrontTower and BackBridge",
+"description": "The PFE package integrates hands-on internship experience with tailored training sessions, offering a unique opportunity for students to bridge theoretical knowledge with real-world application, ensuring a well-rounded preparation for their future endeavors."
+,   
+"Durée": "Onsite : 4 weeks ,  Online/ weekend 8 weeks " ,
+"src":"https://www.springboard.com/blog/wp-content/uploads/2021/10/Essential-Full-Stack-Developer-Skills-scaled-700x408.jpg",
+"price":"1500dt"
+}
+]

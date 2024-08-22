@@ -1,0 +1,28 @@
+[
+    {
+    "id":"1",
+    "nom":"Rania Elouni",
+    "src":"https://i.pinimg.com/736x/0c/5f/f8/0c5ff87202d952a1841d148d830a4807.jpg",
+    "specialite":"Front-end developer",
+    "about":" , a web developer with a passion for crafting compelling online experiences. With proficiency in a variety of programming languages and frameworks "
+
+
+},
+    {
+    "id":"1",
+    "nom":"Khalil Kraiem",
+    "src":"https://i.pinimg.com/736x/97/0f/43/970f43212d806c30d29d9943220d4c97.jpg",
+    "specialite":"Full stack developer",
+    "about":" , a web developer with a passion for crafting compelling online experiences. With proficiency in a variety of programming languages and frameworks "
+
+
+},
+    {
+    "id":"1",
+    "nom":"Farouk Mestiri",
+    "src":"https://i.pinimg.com/736x/66/8e/4e/668e4eb6d5c7370b810aacc1bafec0a1.jpg",
+    "specialite":"Back-end developer",
+    "about":" , a web developer with a passion for crafting compelling online experiences. With proficiency in a variety of programming languages and frameworks "
+
+}
+]

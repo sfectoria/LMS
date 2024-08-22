@@ -1,0 +1,188 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = "postgres://postgres:postgres@localhost:5432/lms"
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  image         String          
+  firstName     String
+  lastName      String
+  email         String          @unique
+  password      String
+  phone         Int?
+  address       String?
+  role          roleContent
+  archived      Boolean         @default(false)
+  Msgs          Msgs[]
+  SessionUser   SessionUser[]
+  userResponses userResponses[]
+}
+
+model Teacher {
+  id        Int    @id @default(autoincrement())
+  name      String
+  imageURL  String 
+  specialty String
+  about     String
+}
+
+model Course {
+  id            Int             @id @default(autoincrement())
+  title         String
+  imageURL      String          
+  videoURL      String?         
+  description   String?
+  price         Float
+  src           String?         
+  src1          String?         
+  src2          String?         
+  Lesson        Lesson[]
+  ProgramCourse ProgramCourse[]
+}
+
+model ProgramCourse {
+  id        Int      @id @default(autoincrement())
+  programId Int
+  program   Program? @relation(fields: [programId], references: [id], onDelete: Cascade)
+  courseId  Int
+  course    Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+model Program {
+  id             Int             @id @default(autoincrement())
+  title          String
+  description    String?         
+  durationOnsite String?
+  durationOnline String?
+  imageURL       String          
+  price          Float
+  Session        Session[]
+  ProgramCourse  ProgramCourse[]
+}
+
+model Session {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String? 
+  videoURL    String?
+  duration    String
+  imageURL    String  
+  programId   Int
+  archived    Boolean @default(false)
+
+  program     Program       @relation(fields: [programId], references: [id], onDelete: Cascade)
+  Week        Week[]
+  Msgs        Msgs[]
+  SessionUser SessionUser[]
+}
+
+model SessionUser {
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  sessionId Int
+  session   Session @relation(fields: [sessionId], references: [id])
+
+  @@unique([userId, sessionId])
+}
+
+model Week {
+  id          Int           @id @default(autoincrement())
+  title       String
+  sessionId   Int
+  session     Session?      @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  WeekContent WeekContent[]
+}
+
+model WeekContent {
+  id              Int            @id @default(autoincrement())
+  weekId          Int
+  week            Week?          @relation(fields: [weekId], references: [id], onDelete: Cascade)
+  LessonContentId Int
+  LessonContent   LessonContent? @relation(fields: [LessonContentId], references: [id], onDelete: Cascade)
+}
+
+model Lesson {
+  id            Int             @id @default(autoincrement())
+  title         String
+  imageURL      String          
+  courseId      Int
+  archived      Boolean         @default(false)
+  course        Course?         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  LessonContent LessonContent[]
+}
+
+model LessonContent {
+  id          Int           @id @default(autoincrement())
+  contentname String
+  type        typeContent
+  contentURL  String?
+  lessonId    Int
+  lesson      Lesson?       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  WeekContent WeekContent[]
+  questions   Question[]
+}
+
+model Question {
+  id              Int                 @id @default(autoincrement())
+  label           String
+  scale           Int
+  LessonContent   LessonContent       @relation(fields: [lessonContentId], references: [id])
+  lessonContentId Int
+  propositions    PropositionAnswer[]
+  userResponses   userResponses[]
+}
+
+model PropositionAnswer {
+  id            Int             @id @default(autoincrement())
+  label         String
+  isCorrect     Boolean
+  Question      Question        @relation(fields: [questionId], references: [id])
+  questionId    Int
+  userResponses userResponses[]
+}
+
+model userResponses {
+  id                  Int                @id @default(autoincrement())
+  propositionanswerId Int
+  propositionAnswer   PropositionAnswer? @relation(fields: [propositionanswerId], references: [id], onDelete: Cascade)
+  Question            Question           @relation(fields: [questionId], references: [id])
+  questionId          Int
+  user                User               @relation(fields: [userId], references: [id])
+  userId              Int
+
+  @@unique([questionId, userId])
+}
+
+model Msgs {
+  id        Int     @id @default(autoincrement())
+  sessionId Int
+  session   Session @relation(fields: [sessionId], references: [id])
+  senderId  Int
+  sender    User    @relation(fields: [senderId], references: [id])
+  content   String
+}
+
+enum typeContent {
+  video
+  pdf
+  projet
+  checkpoint
+  exercice
+}
+
+enum roleContent {
+  Student
+  Teacher
+  Manager
+}

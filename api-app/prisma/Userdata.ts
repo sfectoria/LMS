@@ -285,6 +285,16 @@ export const dataUser = [
     role: roleContent.Manager,
   },
   {
+    image: 'http://localhost:5000/upload/seed/users/khalil.JPG',
+    firstName: 'Marwen',
+    lastName: 'Slimen',
+    email: 'marwaneslimane@gmail.com',
+    password: '7737',
+    phone: 28145532,
+    address: 'Gabes',
+    role: roleContent.Manager,
+  },
+  {
     image: 'http://localhost:5000/upload/seed/users/yasmin.JPG',
     firstName: 'Yasmine',
     lastName: 'Adouani',

@@ -4,11 +4,14 @@ import { deletecourse, fetchCourses, sendcourse } from "../../../store/courses";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Form from "react-bootstrap/Form";
-
+import { Box} from '@mui/material';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 // import PopUp from "./PopUp";
 import Modal from "react-bootstrap/Modal";
@@ -117,7 +120,7 @@ export default function CourseList() {
         <h3
           className="p-5"
           style={{
-            fontFamily: "Segoe UI",
+            fontFamily: "Poppins",
             color: "#11354D",
             textDecoration: "underline",
           }}
@@ -142,20 +145,33 @@ export default function CourseList() {
 
       <div className="d-flex flex-wrap justify-content-center py-3 gap-5 ">
         {courses.map((card) => (
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 345,
+            
+            borderRadius: 2, 
+            boxShadow: 3, 
+            transition: "transform 0.3s ease", 
+            '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: 6,
+               
+            },
+            //  background: 'linear-gradient(145deg, #f0f0f0, #dcdcdc)'
+            
+            }} 
+          >
             <CardMedia
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" ,position: 'relative'}}
               component="img"
               alt="green iguana"
               height="140"
               image={card.imageURL}
-            />
-            <CardContent style={{ height: "10rem" }}>
+            ></CardMedia>
+            <CardContent style={{ height: "12rem" }}>
               <Typography
                 gutterBottom
                 variant="h6"
                 component="div"
-                className="py-2"
+                className="truncate py-2"                
               >
                 {card.title}
               </Typography>
@@ -164,41 +180,54 @@ export default function CourseList() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button
-                size="small"
-                onClick={() => {
-                  navigate(`details/${card.id}`);
-                }}
-                variant="outlined"
-              >
-                Learn More
-              </Button>
-              {user.role === "Manager" && (
-                <div>
-                  <Button
-                    size="small"
-                    onClick={() => {
-                      navigate(`update/${card.id}`);
-                    }}
-                    variant="outlined"
-                    color="secondary"
-                  >
-                    Update
-                  </Button>
-                  <Button
-                    size="small"
-                    onClick={() => {
-                      setModalShow(true);
-                      deletedIdfunc(card.id);
-                    }}
-                    variant="outlined"
-                    color="error"
-                  >
-                    Delete
-                  </Button>
-                </div>
-              )}
-            </CardActions>
+  <Box  sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingBottom:'3px' }}>
+    <Button
+    sx={{
+    transition: "background-color 0.3s ease",
+    '&:hover': {
+      backgroundColor: '#CCE6FF', 
+     
+    },
+  }}
+      size="small"
+      onClick={() => {
+        navigate(`details/${card.id}`);
+      }}
+      variant="outlined" 
+      startIcon={<InfoOutlinedIcon />}
+    >
+      Learn More
+    </Button>
+    {user.role === "Manager" && (
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        <Button
+          size="small"
+          onClick={() => {
+            navigate(`update/${card.id}`);
+          }}
+          variant="outlined"
+          color="success"
+          startIcon={<EditOutlinedIcon />}
+        >
+          Update
+        </Button>
+        <Button
+          size="small"
+
+          onClick={() => {
+            setModalShow(true);
+            deletedIdfunc(card.id);
+          }}
+          variant="outlined"
+          color="error"
+          startIcon={<DeleteOutlineIcon />} 
+        >
+          Delete
+        </Button>
+      </Box>
+    )}
+  </Box>
+</CardActions>
           </Card>
         ))}
       </div>
@@ -208,23 +237,26 @@ export default function CourseList() {
       <Modal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        size="lg"
+        size="l"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Header closeButton className="d-flex justify-content-center" 
+          style={{ backgroundColor: '#B30000', color: 'white' }}>
+          <Modal.Title  id="contained-modal-title-vcenter"  style={{ color: 'white' }}>
             Delete course
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="text-center" >
           <p>Are you sure you want to delete this course ?</p>
         </Modal.Body>
-        <div className="d-flex justify-content-center gap-2 py-3">
-          <Button onClick={() => setModalShow(false)}>Cancle</Button>
+        <div className="d-flex justify-content-center gap-3 py-3">
+          <Button onClick={() => setModalShow(false)}>Cancel</Button>
 
           <Button
-            className="btn btn-danger"
+                 variant="danger" 
+
             onClick={() => {
               deleteCourse(deletedId);
               setModalShow(false);

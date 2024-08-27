@@ -3,7 +3,7 @@ import AspectRatio from "@mui/joy/AspectRatio";
 import CardContent from "@mui/joy/CardContent";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-//gallery
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -98,7 +98,6 @@ export default function CourseDetails() {
               textAlign: "center",
               maxWidth: "100%",
               width: 900,
-              // to make the demo resizable
               resize: "horizontal",
               overflow: "auto",
             }}

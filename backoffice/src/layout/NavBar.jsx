@@ -28,6 +28,7 @@ function NavBar({ isOpen, setIsOpen,socket }) {
   },[socket])
   const user = useSelector((store) => store.auth.me);
   const navigate = useNavigate();
+  console.log("==>>>>>>>>>>>",user)
   return (
     <div
       className={` d-flex ${
